@@ -12,23 +12,34 @@ public class Polynomial {
 	
 	public Polynomial add(Polynomial nomial) {
 		Polynomial newPolynomial = new Polynomial();
-		int polynomialLength = 1;
-		double temp[] = new double[polynomialLength];
 		
 		if (polynomial.length >= nomial.polynomial.length) {
-			temp = polynomial;
-			for(int i = 0; i < nomial.polynomial.length; i++) {
-				temp[i] += nomial.polynomial[i];
+			double temp[] = new double[polynomial.length];
+			int i = 0;
+			while (i < nomial.polynomial.length) {
+				temp[i] = nomial.polynomial[i] += polynomial[i];
+				i++;
 			}
+			while(i < polynomial.length) {
+				temp[i] += polynomial[i];
+				i++;
+			}
+			newPolynomial.polynomial = temp;
 		}
 		else {
-			temp = nomial.polynomial;
-			for(int i = 0; i < polynomial.length; i++) {
-				temp[i] += polynomial[i];
+			double temp[] = new double[nomial.polynomial.length];
+			int i = 0;
+			while (i < polynomial.length) {
+				temp[i] = polynomial[i] += nomial.polynomial[i];
+				i++;
 			}
+			while(i < nomial.polynomial.length) {
+				temp[i] += nomial.polynomial[i];
+				i++;
+			}
+			newPolynomial.polynomial = temp;
 		}
-		
-		newPolynomial.polynomial = temp;
+
 		return newPolynomial;	
 	}
 	
