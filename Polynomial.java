@@ -1,8 +1,9 @@
 public class Polynomial {
 	
-	double polynomial[] = new double[1];
+	double polynomial[];
 
 	public Polynomial() {
+		polynomial = new double[1];
 		polynomial[0] = 0;
 	}
 
@@ -14,30 +15,28 @@ public class Polynomial {
 		Polynomial newPolynomial = new Polynomial();
 		
 		if (polynomial.length >= nomial.polynomial.length) {
-			double temp[] = new double[polynomial.length];
 			int i = 0;
+			newPolynomial.polynomial = new double[polynomial.length];
 			while (i < nomial.polynomial.length) {
-				temp[i] = nomial.polynomial[i] += polynomial[i];
+				newPolynomial.polynomial[i] = nomial.polynomial[i] += polynomial[i];
 				i++;
 			}
 			while(i < polynomial.length) {
-				temp[i] += polynomial[i];
+				newPolynomial.polynomial[i] += polynomial[i];
 				i++;
 			}
-			newPolynomial.polynomial = temp;
 		}
 		else {
-			double temp[] = new double[nomial.polynomial.length];
+			newPolynomial.polynomial = new double[nomial.polynomial.length];
 			int i = 0;
 			while (i < polynomial.length) {
-				temp[i] = polynomial[i] += nomial.polynomial[i];
+				newPolynomial.polynomial[i] = polynomial[i] += nomial.polynomial[i];
 				i++;
 			}
 			while(i < nomial.polynomial.length) {
-				temp[i] += nomial.polynomial[i];
+				newPolynomial.polynomial[i] += nomial.polynomial[i];
 				i++;
 			}
-			newPolynomial.polynomial = temp;
 		}
 
 		return newPolynomial;	
